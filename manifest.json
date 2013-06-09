@@ -1,0 +1,26 @@
+{
+  "name": "IP Lookup",
+  "version": "1",
+  "manifest_version": 2,
+  "description": "Provides a popup looking up the location of IPs upon hovering over them in a webpage.",
+  "browser_action": {
+    "default_icon": "icon.png",
+	"default_popup":"popup.html",
+	"default_title":"View Options"
+  },
+  "icons":
+  { 
+    "48" : "icon48.png"
+  },
+   "content_scripts": [
+    {
+      "matches": ["http://zhanger.us/*"],      
+      "js": ["jquery-1.9.1.js", "bg.js"]
+    }
+  ],
+  "permissions": [
+    "http://api.ipinfodb.com/"
+  ],
+  "web_accessible_resources": [
+  ]
+}
