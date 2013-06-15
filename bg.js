@@ -56,7 +56,7 @@ $("tr a").click(function(e) {
 })
 if ($("[name=inv]").length > 0) {
 $(".form").first().before('<p align="center"><input type="button" value="Mass Update Items" class="button" onclick="$(\'#massupdatebox1\').slideToggle()"> <input type="submit" name="inv" value="Invoice Selected Items" class="button"> <input type="submit" name="del" value="Delete Selected Items" class="button"></p>');
-$(".form").first().before($('#massupdatebox').clone().attr('id','massupdatebox1'))
+//$(".form").first().before($('#massupdatebox').clone().attr('id','massupdatebox1'))
 }
 
 $('a').each(function(){
