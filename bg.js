@@ -80,8 +80,4 @@ if ( result != null) {
 	});
 }
 });
-//$.getJSON('http://api.ipinfodb.com/v3/ip-city/?key=1a32751137d22b76a436119186d0821ac81a9f894b2f4dcdc198ee3605ed8263&ip=91.121.201.125&format=json',function(data) {console.log(data) });
-//$("body").css("background-color","black");
-//console.log($("body"));
-//alert('dammit');
 });
