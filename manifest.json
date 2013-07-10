@@ -16,9 +16,6 @@
       "js": ["jquery-1.9.1.js", "bg.js"]
     }
   ],
-  "permissions": [
-    "http://api.ipinfodb.com/"
-  ],
   "web_accessible_resources": [
   ]
 }
