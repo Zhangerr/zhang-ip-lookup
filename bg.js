@@ -16,6 +16,21 @@ jQuery.fn.selectText = function(){
         selection.addRange(range);
     }
 };
+function iSearch(result) {
+    //insert the text into the search box
+		$("#intellisearchval").val(result);
+    //proc the search box
+		var intellisearchlength = $("#intellisearchval").val().length;
+        if (intellisearchlength>2) {
+        $.post("search.php", { intellisearch: "true", value: $("#intellisearchval").val() },
+          function(data){
+            $("#searchresults").html(data);
+            $("#searchresults").slideDown("slow");
+          });
+        }
+    //select the text for easy copying
+		$(this).selectText();
+}
 
 jQuery(document).ready(function($) {
   //If the user actually does use the checkbox, don't activate the "check/uncheck" event
@@ -24,7 +39,7 @@ jQuery(document).ready(function($) {
   });  
   //bind onto each table row to do the automatic checking/unchecking
   //TODO: http://24ways.org/2011/your-jquery-now-with-less-suck/ could use event delegation as mentioned in this article
-  $("tr").click(function() {
+  $("table").on('click', 'tr',function() {
     var cb = $(this).children().first().children().first();
     if (cb.is(":checked")) {
     cb.prop('checked',false);
@@ -32,8 +47,9 @@ jQuery(document).ready(function($) {
     cb.prop('checked',true);
     }
     });
+	
   //don't do the check/uncheck if the user specifically clicks a link
-  $("tr a").click(function(e) {
+  $("table").on('click', "tr a", function(e) {
   	e.stopPropagation();
   });
   //insert the clone of the delete and invoice
@@ -52,19 +68,7 @@ if ( result != null) {
 	$(this).click(function(e) {
 		e.preventDefault();
 		e.stopPropagation();
-    //insert the text into the search box
-		$("#intellisearchval").val(result[0]);
-    //proc the search box
-		var intellisearchlength = $("#intellisearchval").val().length;
-        if (intellisearchlength>2) {
-        $.post("search.php", { intellisearch: "true", value: $("#intellisearchval").val() },
-          function(data){
-            $("#searchresults").html(data);
-            $("#searchresults").slideDown("slow");
-          });
-        }
-    //select the text for easy copying
-		$(this).selectText();
+		iSearch.call(this, result[0]);
 	});
 }
 });
