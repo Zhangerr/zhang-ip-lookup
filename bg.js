@@ -43,7 +43,7 @@ $.extend($.expr[':'],{
   /*$("[name='selectedorders[]']").click(function(e) {
 	e.stopPropagation();
   });*/
-  $("tr").click(function() {
+  $("table").on('click','tr', function() {
 var cb = $(this).children().first().children().first();
 if (cb.is(":checked")) {
 cb.prop('checked',false);
@@ -51,9 +51,10 @@ cb.prop('checked',false);
 cb.prop('checked',true);
 }
 });
-$("tr a").click(function(e) {
+$("table").on('click',"tr a", function(e) {
 	e.stopPropagation();
-})
+});
+
 if ($("[name=inv]").length > 0) {
 $(".form").first().before('<p align="center"><input type="button" value="Mass Update Items" class="button" onclick="$(\'#massupdatebox1\').slideToggle()"> <input type="submit" name="inv" value="Invoice Selected Items" class="button"> <input type="submit" name="del" value="Delete Selected Items" class="button"></p>');
 //$(".form").first().before($('#massupdatebox').clone().attr('id','massupdatebox1'))
