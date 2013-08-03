@@ -37,6 +37,7 @@ jQuery(document).ready(function($) {
   $("[type='checkbox']").click(function(e) {
 	   e.stopPropagation();
   });  
+  $("<style>table.datatable tr:hover td {background-color: rgb(200,200,200); !important}</style>").appendTo('head');
   //bind onto each table row to do the automatic checking/unchecking
   //TODO: http://24ways.org/2011/your-jquery-now-with-less-suck/ could use event delegation as mentioned in this article
   $("table").on('click', 'tr',function() {
