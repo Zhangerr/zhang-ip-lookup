@@ -1,3 +1,5 @@
+//mass update button key shortcut, shift click checkbox selection
+//scroll to bottom function
 /*jQuery extension for selecting text*/
 jQuery.fn.selectText = function(){
     var doc = document
@@ -34,6 +36,27 @@ function iSearch(result) {
 
 jQuery(document).ready(function($) {
   //If the user actually does use the checkbox, don't activate the "check/uncheck" event
+  if(window.location.host === 'billing.buycpanel.com') {
+  window.onkeyup=function(e) {
+  if($("input:focus").length === 0 ) {
+	if(e.keyCode === 65) {
+		$("[value='Accept Order']").trigger('click');
+	} else 	if(e.keyCode === 67) {
+		$("[value='Cancel Order']").trigger('click');
+	} else 	if(e.keyCode === 68) {
+		$("[value='Delete Order']").trigger('click');
+		$("[value='Delete Selected Items']").trigger('click');
+	} else 	if(e.keyCode === 73) {
+		$("[value='Invoice Selected Items']").trigger('click');
+	} else 	if(e.keyCode === 65) {
+		$("[value='Accept Order']").trigger('click');
+	} else if(e.keyCode === 81) {
+		$("html, body").animate({ scrollTop: 0 }, "fast");
+	} else if (e.keyCode === 87) {
+		$("html, body").animate({ scrollTop: $(document).height() }, "fast");
+	}
+  }
+  }
   $("[type='checkbox']").click(function(e) {
 	   e.stopPropagation();
   });  
@@ -55,7 +78,7 @@ jQuery(document).ready(function($) {
   });
   //insert the clone of the delete and invoice
   if ($("[name=inv]").length > 0) {
-    $(".form").first().before('<p align="center"><input type="button" value="Mass Update Items" class="button" onclick="$(\'#massupdatebox1\').slideToggle()"> <input type="submit" name="inv" value="Invoice Selected Items" class="button"> <input type="submit" name="del" value="Delete Selected Items" class="button"></p>');
+    $(".form").first().before('<p align="center"> <input type="submit" name="inv" value="Invoice Selected Items" class="button"> <input type="submit" name="del" value="Delete Selected Items" class="button"></p>');
   }
 //magic for the automatic selection and insertion into the intelligence search
 //TODO: limit the scope of the .each with a prior selector to the table
@@ -73,4 +96,7 @@ if ( result != null) {
 	});
 }
 });
+} else {
+document.body.innerHTML += '<script>window.confirm = function(){return true;}</script>';
+}
 });
