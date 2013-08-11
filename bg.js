@@ -38,7 +38,8 @@ jQuery(document).ready(function($) {
   //If the user actually does use the checkbox, don't activate the "check/uncheck" event
   if(window.location.host === 'billing.buycpanel.com') {
   window.onkeyup=function(e) {
-  if($("input:focus").length === 0 ) {
+  
+  if($("*:focus").length === 0 ) {
 	if(e.keyCode === 65) {
 		$("[value='Accept Order']").trigger('click');
 	} else 	if(e.keyCode === 67) {
