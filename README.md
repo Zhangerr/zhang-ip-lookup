@@ -13,6 +13,20 @@ Features
 
 **WHAT ARE YOU WAITING FOR? [DOWNLOAD NOW!](https://github.com/Zhangerr/zhang-whmcs-utils/raw/master/cpanel-extension.zip)**
 
+Keyboard Shortcuts
+-----
+`q` to scroll to the top of the page
+
+`w` the scroll to the bottom
+
+`a` to accept orders
+
+`c` to cancel orders
+
+`d` to delete orders
+
+`i` in invoice orders
+
 Installation
 ----
 
