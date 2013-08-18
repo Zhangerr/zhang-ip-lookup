@@ -35,6 +35,7 @@ function iSearch(result) {
 }
 
 jQuery(document).ready(function($) {
+	var shift_cb = -1;
   //If the user actually does use the checkbox, don't activate the "check/uncheck" event
   if(window.location.host === 'billing.buycpanel.com') {
   window.onkeyup=function(e) {
@@ -55,8 +56,17 @@ jQuery(document).ready(function($) {
 		$("html, body").animate({ scrollTop: 0 }, "fast");
 	} else if (e.keyCode === 87) {
 		$("html, body").animate({ scrollTop: $(document).height() }, "fast");
+	} else if (e.keyCode === 80) { //p
+		$(".datatable tr").each(function(e) {
+			if($(this).children().eq(-2).text() === 'Pending') {
+				var cb = $(this).children().first().children().first();
+				cb.prop('checked', !cb.is(":checked"));
+			}
+		});
+	} else if (e.keyCode === 84) { //t 
+	$(".datatable tr").each(function(e) {if(parseInt($(this).children().eq(3).text().split(' ')[0].split('/')[1]) !== new Date().getDate()) {$(this).toggle()}})
 	}
-  }
+	}
   }
   $("[type='checkbox']").click(function(e) {
 	   e.stopPropagation();
@@ -64,13 +74,34 @@ jQuery(document).ready(function($) {
   $("<style>table.datatable tr:hover td {background-color: rgb(200,200,200); !important}</style>").appendTo('head');
   //bind onto each table row to do the automatic checking/unchecking
   //TODO: http://24ways.org/2011/your-jquery-now-with-less-suck/ could use event delegation as mentioned in this article
-  $("table").on('click', 'tr',function() {
-    var cb = $(this).children().first().children().first();
-    if (cb.is(":checked")) {
-    cb.prop('checked',false);
-    } else {
-    cb.prop('checked',true);
-    }
+  $("table").on('click', 'tr',function(e) {
+	if(e.shiftKey) {
+		if(shift_cb !== -1) {
+			var selected = $('.datatable tr')
+			if($(this).index() < shift_cb) {
+				selected = selected.slice($(this).index(),shift_cb);
+			} else if ($(this).index() > shift_cb) {
+				selected = selected.slice(shift_cb+1, $(this).index()+1);
+			}
+			selected.each(function(e) {
+				var cb = $(this).children().first().children().first();
+				if (cb.is(":checked")) {
+					cb.prop('checked',false);
+				} else {
+					cb.prop('checked',true);					
+				}
+			});
+			shift_cb = $(this).index();
+		}
+	} else {
+		var cb = $(this).children().first().children().first();
+		if (cb.is(":checked")) {
+			cb.prop('checked',false);
+		} else {
+			cb.prop('checked',true);
+			shift_cb = $(this).index()
+		}
+	}
     });
 	
   //don't do the check/uncheck if the user specifically clicks a link
