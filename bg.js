@@ -36,7 +36,7 @@ function iSearch(result) {
 
 jQuery(document).ready(function($) {
 	$(".datatable tr").each(function(e) {
-		console.log($(this).children().eq(4).children().first().prop('target','cpanel')
+		$(this).children().eq(4).children().first().prop('target','cpanel')
 	});
 	var shift_cb = -1;
   //If the user actually does use the checkbox, don't activate the "check/uncheck" event
