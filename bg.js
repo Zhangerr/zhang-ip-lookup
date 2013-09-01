@@ -35,6 +35,9 @@ function iSearch(result) {
 }
 
 jQuery(document).ready(function($) {
+	$(".datatable tr").each(function(e) {
+		console.log($(this).children().eq(4).children().first().prop('target','cpanel')
+	});
 	var shift_cb = -1;
   //If the user actually does use the checkbox, don't activate the "check/uncheck" event
   if(window.location.host === 'billing.buycpanel.com') {
@@ -93,6 +96,7 @@ jQuery(document).ready(function($) {
 			});
 			shift_cb = $(this).index();
 		}
+		
 	} else {
 		var cb = $(this).children().first().children().first();
 		if (cb.is(":checked")) {
@@ -102,6 +106,7 @@ jQuery(document).ready(function($) {
 			shift_cb = $(this).index()
 		}
 	}
+	
     });
 	
   //don't do the check/uncheck if the user specifically clicks a link
