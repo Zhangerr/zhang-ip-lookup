@@ -13,6 +13,15 @@ Features
 
 **WHAT ARE YOU WAITING FOR? [DOWNLOAD NOW!](https://github.com/Zhangerr/zhang-whmcs-utils/raw/master/cpanel-extension.zip)**
 
+Serious Description of Features
+----
+
+-  Automatically makes highlighted rows in WHMCS darker for more readability
+-  Can select checkboxes just by clicking on the row instead
+-  Shift click (just like in windows explorer) to select multiple when in "pending orders" page
+-  Keyboard shortcuts (see below) if actions are possible in current context
+-  Click on the IP in a client's summary page for it to be automatically highlighted and pasted into the intelligence search box, as well as making for easy copying with `CTRL+C`
+
 Keyboard Shortcuts
 -----
 `q` to scroll to the top of the page
@@ -26,6 +35,8 @@ Keyboard Shortcuts
 `d` to delete orders
 
 `i` in invoice orders
+
+`p` to select pending orders when viewing the summary of a client
 
 Installation
 ----
